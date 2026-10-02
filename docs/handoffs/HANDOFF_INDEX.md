@@ -1,0 +1,7 @@
+# Handoff Index
+
+This file is the authoritative index of project handoffs. Every completed unit of work must create or update an English handoff document and register it here before a pull request is opened.
+
+| ID | Date | Branch | Scope | Status | Handoff |
+|---|---|---|---|---|---|
+| HO-001 | 2026-10-01 | `chore/bootstrap-repository-structure` | Repository bootstrap and SV-001 import | Complete | [HO-001 Repository Bootstrap and SV-001](HO-001_REPOSITORY_BOOTSTRAP_AND_SV001.md) |
