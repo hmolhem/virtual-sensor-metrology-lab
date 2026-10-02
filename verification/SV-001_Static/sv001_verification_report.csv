@@ -1,0 +1,9 @@
+Test_ID,Description,Status,Observed,Expected_or_Criterion
+SV-001A,Deterministic DUT offset,PASS,50.800000000000004,50.8 %RH exactly
+SV-001B,Deterministic reference bias,PASS,50.1,50.10 %RH exactly
+SV-001C,DUT/reference quantization,PASS,"DUT=50.8, REF=50.84","DUT=50.8, REF=50.84"
+SV-001D,Repeatability noise mean/std,PASS,"mean=0.00015, sd=0.19981",|mean|<0.01 and |sd-0.20|<0.01
+SV-001E,Chamber stability mean/std,PASS,"mean=50.00042, sd=0.11989",|mean-50|<0.01 and |sd-0.12|<0.01
+SV-001F,Hierarchical day/run/random-noise structure,PASS,"day_constant=True, run_constant=True, noise_varies=True","day=True, run=True, noise=True"
+SV-001G,Fixed-seed reproducibility,PASS,"same_seed_same=True, different_seed_diff=True","True, True"
+SV-001H,No private-truth fields in analyst dataset,PASS,leaked_columns=[],[]
