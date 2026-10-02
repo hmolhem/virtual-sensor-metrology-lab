@@ -104,7 +104,7 @@ ipython_config.py
 #   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
 #   This is especially recommended for binary packages to ensure reproducibility, and is more
 #   commonly ignored for libraries.
-#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
+#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-into-source-control
 # poetry.lock
 # poetry.toml
 
@@ -120,8 +120,8 @@ ipython_config.py
 # pixi
 #   Similar to Pipfile.lock, it is generally recommended to include pixi.lock in version control.
 # pixi.lock
-#   Pixi creates a virtual environment in the .pixi directory, just like venv module creates one
-#   in the .venv directory. It is recommended not to include this directory in version control.
+#   Pixi creates a virtual environment in the .pixi directory, just like venv module creates one.
+#   It is recommended not to include this directory in version control.
 .pixi
 
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
@@ -184,7 +184,7 @@ cython_debug/
 # PyCharm
 #   JetBrains specific template is maintained in a separate JetBrains.gitignore that can
 #   be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#   and can be added to the global gitignore or merged into this file.  For a more nuclear
+#   and can be added to the global gitignore or merged into this file. For a more nuclear
 #   option (not recommended) you can uncomment the following to ignore the entire idea folder.
 # .idea/
 
@@ -195,9 +195,9 @@ cython_debug/
 .abstra/
 
 # Visual Studio Code
-#   Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore 
+#   Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore
 #   that can be found at https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore
-#   and can be added to the global gitignore or merged into this file. However, if you prefer, 
+#   and can be added to the global gitignore or merged into this file. However, if you prefer,
 #   you could uncomment the following to ignore the entire vscode folder
 # .vscode/
 # Temporary file for partial code execution
@@ -216,3 +216,17 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ------------------------------------------------------------
+# Project-specific protection
+# ------------------------------------------------------------
+# Final hidden simulator truth must remain local/private.
+config/private/*
+!config/private/README.md
+
+data/private_truth/*
+!data/private_truth/README.md
+
+# Local scratch / exports
+scratch/
+exports/
