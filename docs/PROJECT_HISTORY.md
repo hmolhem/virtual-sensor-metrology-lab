@@ -1,6 +1,6 @@
 # Project History
 
-This file is the concise chronological engineering history of the **Synthetic Sensor Metrology Lab** project.
+This file is the concise chronological engineering history of the **Virtual Sensor Metrology Lab** project.
 
 Historical entries HO-001 through HO-005 were created before the repository scope was explicitly separated from the downstream DS 7140 course analysis. They are preserved as part of the laboratory's engineering history.
 
@@ -99,7 +99,7 @@ Separated the virtual laboratory and synthetic-data-generation work from the fut
 
 **Verification:** Repository architecture and information-boundary consistency review; existing `SV-001`, `SV-002`, and `ED-001` artifacts preserved unchanged.
 
-**Key outcome:** This repository is now explicitly the **Synthetic Sensor Metrology Lab**. It owns simulator physics, private truth, experiment design, measurement generation, and analyst-facing dataset release. Downstream EDA, ANOVA, calibration, blind validation, uncertainty analysis, Monte Carlo analysis, compliance decisions, notebooks, and course report will live in a separate DS 7140 repository created after the first frozen dataset release.
+**Key outcome:** This repository is now explicitly the **Virtual Sensor Metrology Lab**. It owns simulator physics, private truth, experiment design, measurement generation, and analyst-facing dataset release. Downstream EDA, ANOVA, calibration, blind validation, uncertainty analysis, Monte Carlo analysis, compliance decisions, notebooks, and course report will live in a separate DS 7140 repository created after the first frozen dataset release.
 
 A formal interface contract was added at `docs/02_LAB_TO_DS7140_INTERFACE.md`, and `data/generated/` was established as the release boundary.
 
@@ -107,10 +107,24 @@ A formal interface contract was added at `docs/02_LAB_TO_DS7140_INTERFACE.md`, a
 
 ---
 
+## 2026-10-01 — HO-007 — Repository Front Page Refresh
+
+**Branch:** `docs/refresh-repository-front-page`
+
+Refreshed the repository landing page so the visible project identity, laboratory-only scope, public/private information boundary, frozen-dataset handoff contract, verified baseline, and current roadmap are immediately clear.
+
+**Verification:** Documentation consistency review; simulator code and existing verification gates unchanged.
+
+**Key outcome:** The README now matches the renamed `virtual-sensor-metrology-lab` repository and states explicitly that the project is still constructing the virtual laboratory; the final DS 7140 dataset has not yet been generated.
+
+**Handoff:** `docs/handoffs/HO-007_REPOSITORY_FRONT_PAGE_REFRESH.md`
+
+---
+
 ## Current engineering state
 
 The virtual laboratory has passed the static and dynamic simulator verification gates, the verified behavior has been refactored into reusable core modules, and the experimental design has been defined and verified.
 
-The repository boundary is now explicit: this repository stops at the frozen analyst-facing dataset release. A separate DS 7140 repository will begin from that release.
+The repository boundary is explicit: this repository stops at the frozen analyst-facing dataset release. A separate DS 7140 repository will begin from that release.
 
 The next technical milestone is to define and verify the public/private configuration boundary and then freeze the hidden DUT/reference/chamber parameter set before generating the full synthetic measurement campaign.
