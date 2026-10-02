@@ -1,1 +1,1 @@
-"""Core simulator package for full sensor validation and metrology."""
+"""Core simulator package for the Synthetic Sensor Metrology Lab."""
