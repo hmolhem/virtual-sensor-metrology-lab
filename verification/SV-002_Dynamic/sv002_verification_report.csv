@@ -1,0 +1,11 @@
+Test_ID,Description,Status,Observed,Expected_or_Criterion
+SV-002A,Ideal first-order response reaches 63.2% at one time constant,PASS,55.28482235 %RH,55.28482235 %RH
+SV-002B,Ideal first-order t90 analytical relation,PASS,46.05170186 s,46.05170186 s
+SV-002C,Pure dead time shifts observed t90 without changing intrinsic tau,PASS,49.05170186 s,49.05170186 s
+SV-002D,Log-linear estimator recovers known isolated DUT time constant,PASS,tau_hat=20.00000000 s,relative error < 0.5%
+SV-002E,1 Hz sampled t90 threshold timing is bounded by one sample,PASS,sampled=50.000 s; exact=49.052 s,0 <= sampled - exact <= 1.0 s
+SV-002F,Rise/fall time constants produce proportional t90 asymmetry,PASS,"t90_up=46.0517, t90_down=64.4724, ratio=1.4000",ratio=1.4000 and down > up
+SV-002G,Cascaded chamber/reference/DUT dynamic states converge to final command,PASS,"cmd=70.0000, chamber=69.9813, ref=69.9780, dut=69.9378",all final-state errors within configured tolerances
+SV-002H,Dynamic simulation is reproducible for fixed seed,PASS,"same_seed_same=True, different_seed_diff=True","True, True"
+SV-002I,Analyst dataset contains no dynamic private-truth fields,PASS,leaked_columns=[],[]
+SV-002J,Finer sampling does not worsen threshold-timing discretization error,PASS,1Hz_error=0.9483 s; 4Hz_error=0.1983 s,4 Hz error <= 1 Hz error and <= 0.25 s
