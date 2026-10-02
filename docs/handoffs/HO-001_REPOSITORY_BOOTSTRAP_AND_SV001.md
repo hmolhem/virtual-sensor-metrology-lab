@@ -17,8 +17,9 @@ Establish a repository structure that supports a verification-first sensor-metro
 2. Updated `.gitignore` so final private simulator truth remains local and is not committed.
 3. Added the project architecture document describing the chamber, reference, DUT, DAQ, experiment-runner, and public/private data paths.
 4. Added an authoritative handoff index under `docs/handoffs/HANDOFF_INDEX.md`.
-5. Added the SV-001 static verification fixture and its generated verification artifacts.
-6. Confirmed that SV-001 passes all eight verification checks before proceeding to dynamic verification.
+5. Added the SV-001 static verification fixture, its PASS report, and a fixture README describing the reproducible local analyst/private CSV outputs.
+6. Added repository guides for configuration, source code, raw/processed/calibration/validation/dynamic data, notebooks, results, and reports.
+7. Confirmed that SV-001 passes all eight verification checks before proceeding to dynamic verification.
 
 ## SV-001 verification checks
 
@@ -38,6 +39,7 @@ Establish a repository structure that supports a verification-first sensor-metro
 - Simulation truth and analyst data are treated as different data products.
 - Final hidden DUT truth is never committed to the repository.
 - Verification fixtures may expose known truth because their purpose is to verify simulator correctness.
+- Generated fixture CSVs are reproducible outputs and are not treated as authoritative source files; the tracked PASS report is the verification record.
 - Day effects are sampled once per day, run effects once per run, and repeatability noise once per observation so later ANOVA and variance-component analyses remain meaningful.
 - Full project datasets will not be generated until both static and dynamic simulator-verification gates pass.
 
