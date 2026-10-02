@@ -33,4 +33,9 @@ Final hidden simulator truth must not be committed to the repository.
 
 ## Current milestone
 
-`SV-001` verifies the static synthetic-data generator before any full project dataset is created.
+The initial simulator verification gates have passed:
+
+- `SV-001` — static generator verification: **PASS**
+- `SV-002` — dynamic generator verification: **PASS**
+
+The next milestone is to refactor the verified static and dynamic simulation logic into reusable modules under `src/` before the final hidden DUT personality is frozen.
