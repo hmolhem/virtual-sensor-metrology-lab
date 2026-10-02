@@ -111,7 +111,7 @@ ipython_config.py
 # pdm
 #   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
 #   pdm recommends including project-wide configuration in pdm.toml, but excluding .pdm-python.
-#   https://pdm-project.org/en/latest/usage/project/#working-with-version-control
+#   https://pdm-project.org/en/latest/usage/project/working-with-version-control/
 # pdm.lock
 # pdm.toml
 .pdm-python
@@ -124,7 +124,7 @@ ipython_config.py
 #   It is recommended not to include this directory in version control.
 .pixi
 
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
 __pypackages__/
 
 # Celery stuff
@@ -226,6 +226,13 @@ config/private/*
 
 data/private_truth/*
 !data/private_truth/README.md
+
+# Generated verification fixtures/matrices remain local unless explicitly curated.
+verification/SV-001_Static/sv001_analyst.csv
+verification/SV-001_Static/sv001_private_truth.csv
+verification/SV-002_Dynamic/sv002_analyst_fixture.csv
+verification/SV-002_Dynamic/sv002_private_fixture.csv
+verification/ED-001_Experimental_Design/ed001_*_matrix.csv
 
 # Local scratch / exports
 scratch/

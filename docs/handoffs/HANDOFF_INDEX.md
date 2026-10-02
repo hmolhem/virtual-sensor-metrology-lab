@@ -7,3 +7,4 @@ This file is the authoritative index of project handoffs. Every completed unit o
 | HO-001 | 2026-10-01 | `chore/bootstrap-repository-structure` | Repository bootstrap and SV-001 import | Complete | [HO-001 Repository Bootstrap and SV-001](HO-001_REPOSITORY_BOOTSTRAP_AND_SV001.md) |
 | HO-002 | 2026-10-01 | `feature/sv002-dynamic-verification` | SV-002 dynamic generator verification | Complete | [HO-002 SV-002 Dynamic Verification](HO-002_SV002_DYNAMIC_VERIFICATION.md) |
 | HO-003 | 2026-10-01 | `refactor/core-simulator-modules` | Refactor verified static and dynamic logic into reusable simulator modules | Complete | [HO-003 Core Simulator Refactor](HO-003_CORE_SIMULATOR_REFACTOR.md) |
+| HO-004 | 2026-10-01 | `feature/experimental-design-matrix` | Implement and verify static, dynamic, stability, and uncertainty experimental-design matrices | Complete | [HO-004 Experimental Design Matrix](HO-004_EXPERIMENTAL_DESIGN_MATRIX.md) |

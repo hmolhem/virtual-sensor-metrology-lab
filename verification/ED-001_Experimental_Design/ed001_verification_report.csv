@@ -1,0 +1,12 @@
+Test_ID,Description,Status,Observed,Expected_or_Criterion
+ED-001A,Static matrix contains full balanced factorial design,PASS,252,252 condition-holds
+ED-001B,"Static matrix is balanced across RH, temperature, direction, day, and run",PASS,"per RH/T/direction=[6]; per RH/T/direction/day=[2]","6 and 2 respectively"
+ED-001C,"Calibration, blind validation, and characterization roles have expected counts",PASS,"{'CHARACTERIZATION': 120, 'CALIBRATION': 96, 'VALIDATION': 36}","{'CALIBRATION': 96, 'VALIDATION': 36, 'CHARACTERIZATION': 120}"
+ED-001D,Calibration/validation split obeys predeclared RH and day holdouts,PASS,"CAL RH=[20.0, 40.0, 60.0, 80.0], days=[1, 2]; VAL RH=[30.0, 50.0, 70.0], days=[3]","CAL RH 20/40/60/80 on days 1-2; VAL RH 30/50/70 on day 3"
+ED-001E,"Dynamic step DOE has two directions, three temperatures, and five repetitions",PASS,"rows=30, reps_per_step/T=[5]","30 rows; 5 reps per step/temperature"
+ED-001F,Ramp DOE has 18 tests at 2 %RH/min with correct 20-minute ramp duration,PASS,"rows=18, durations=[1200.0]","18 rows; 1200 s duration"
+ED-001G,Cyclic DOE has three sessions of five cycles at 25 C,PASS,"rows=3, cycle_count=[5]","3 sessions; 5 cycles/session"
+ED-001H,Sinusoidal DOE preserves four predeclared periods and reciprocal frequency,PASS,"periods=[600, 300, 120, 60]","600, 300, 120, 60 s and f=1/T"
+ED-001I,Ninety-day stability schedule contains weekly center checks and 30-day multi-point checks,PASS,"total=22, weekly=13, monthly=9, monthly_days=[30, 60, 90]","22 total = 13 weekly + 9 monthly; monthly days 30/60/90"
+ED-001J,Uncertainty evaluation points include three representative points and one worst-case point,PASS,"points=[(30.0, 25.0), (50.0, 25.0), (70.0, 25.0), (80.0, 35.0)], worst_case_count=1","30/50/70 %RH at 25 C plus 80 %RH at 35 C"
+ED-001K,Test IDs are globally unique across all test families,PASS,"total_ids=333, unique_ids=333",all IDs unique
