@@ -1,6 +1,8 @@
 # Project History
 
-This file is the concise chronological engineering history of the **Full Sensor Validation & Metrology** project.
+This file is the concise chronological engineering history of the **Synthetic Sensor Metrology Lab** project.
+
+Historical entries HO-001 through HO-005 were created before the repository scope was explicitly separated from the downstream DS 7140 course analysis. They are preserved as part of the laboratory's engineering history.
 
 It complements, but does not replace, the detailed handoff documents in `docs/handoffs/`.
 
@@ -89,8 +91,26 @@ Introduced this independent project-history ledger and made history maintenance 
 
 ---
 
+## 2026-10-01 — HO-006 — Laboratory Scope Separation
+
+**Branch:** `refactor/synthetic-metrology-lab-scope`
+
+Separated the virtual laboratory and synthetic-data-generation work from the future DS 7140 analysis project before hidden truth or the final measurement dataset was frozen.
+
+**Verification:** Repository architecture and information-boundary consistency review; existing `SV-001`, `SV-002`, and `ED-001` artifacts preserved unchanged.
+
+**Key outcome:** This repository is now explicitly the **Synthetic Sensor Metrology Lab**. It owns simulator physics, private truth, experiment design, measurement generation, and analyst-facing dataset release. Downstream EDA, ANOVA, calibration, blind validation, uncertainty analysis, Monte Carlo analysis, compliance decisions, notebooks, and course report will live in a separate DS 7140 repository created after the first frozen dataset release.
+
+A formal interface contract was added at `docs/02_LAB_TO_DS7140_INTERFACE.md`, and `data/generated/` was established as the release boundary.
+
+**Handoff:** `docs/handoffs/HO-006_LAB_SCOPE_SEPARATION.md`
+
+---
+
 ## Current engineering state
 
-The simulator physics has passed the static and dynamic verification gates, the verified behavior has been refactored into reusable core modules, and the project-level experimental design has been defined and verified.
+The virtual laboratory has passed the static and dynamic simulator verification gates, the verified behavior has been refactored into reusable core modules, and the experimental design has been defined and verified.
 
-The next technical milestone is to define the final public/private configuration boundary and then freeze the hidden DUT/reference/chamber parameter set before generating the full synthetic validation dataset.
+The repository boundary is now explicit: this repository stops at the frozen analyst-facing dataset release. A separate DS 7140 repository will begin from that release.
+
+The next technical milestone is to define and verify the public/private configuration boundary and then freeze the hidden DUT/reference/chamber parameter set before generating the full synthetic measurement campaign.
