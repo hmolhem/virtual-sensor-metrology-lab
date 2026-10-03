@@ -151,9 +151,23 @@ Generated and sealed the final simulator-only DUT/reference/chamber personality 
 
 ---
 
+## 2026-10-03 — HO-010 — Ignore Local VS Code Workspace
+
+**Branch:** `chore/ignore-vscode-workspace`
+
+Updated `.gitignore` so local `.vscode/` workspace metadata is ignored rather than appearing as untracked repository content.
+
+**Verification:** Documentation/diff review; no simulator, configuration-boundary, experimental-design, hidden-personality, or dataset-generation logic changed.
+
+**Key outcome:** Local VS Code settings are kept outside version control and the working tree can remain clean while using VS Code.
+
+**Handoff:** `docs/handoffs/HO-010_IGNORE_VSCODE_WORKSPACE.md`
+
+---
+
 ## Current engineering state
 
-The virtual laboratory has passed the static and dynamic simulator verification gates, the experimental design is verified, the public/private configuration boundary has passed CB-001, and the final hidden laboratory personality is now frozen and cryptographically committed.
+The virtual laboratory has passed the static and dynamic simulator verification gates, the experimental design is verified, the public/private configuration boundary has passed CB-001, and the final hidden laboratory personality is frozen and cryptographically committed.
 
 The repository boundary remains explicit: this repository stops at the frozen analyst-facing dataset release. A separate DS 7140 repository will begin from that release.
 
