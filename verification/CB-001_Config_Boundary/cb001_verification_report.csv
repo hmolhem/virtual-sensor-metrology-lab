@@ -1,0 +1,12 @@
+Check,Description,Status,Detail
+A,Public configuration loads with required sections,PASS,schema_version=1.0
+B,Public DUT acceptance limits are complete,PASS,"limits=['drift_max_rh_percent_per_year', 'hysteresis_max_rh_percent', 'linearity_max_rh_percent', 'repeatability_sigma_max_rh_percent', 'settling_band_abs_rh_percent', 'static_accuracy_abs_rh_percent', 't90_max_s', 'temperature_influence_max_rh_percent_per_c']"
+C,Public configuration contains no private fields,PASS,no private-key markers found
+D,Private loader accepts protected local fixture,PASS,dummy verification truth loaded only from config/private
+E,Private loader rejects unprotected paths,PASS,private truth outside config/private rejected
+F,Canonical analyst record passes boundary gate,PASS,canonical analyst record accepted
+G,Leaked private fields are rejected,PASS,"Analyst payload contains private/simulator-only fields: $.true_rh, $.dut_truth"
+H,Analyst JSON writer enforces safe serialization,PASS,exported_fields=12
+I,Git ignore policy protects final private truth,PASS,required private-path rules present
+J,No private truth files are tracked,PASS,"tracked_private_paths=['config/private/README.md', 'data/private_truth/README.md']"
+K,Public experiment role policy matches declared design boundary,PASS,"roles=['calibration', 'characterization', 'validation']"
