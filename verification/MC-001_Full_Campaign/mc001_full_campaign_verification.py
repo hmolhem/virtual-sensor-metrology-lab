@@ -132,7 +132,7 @@ def main() -> int:
 
     finite = all(
         frame[["RH_Reference", "RH_DUT"]].notna().all().all()
-        and frame[["RH_Reference", "RH_DUT"]].applymap(lambda x: abs(float(x)) < 200).all().all()
+        and frame[["RH_Reference", "RH_DUT"]].map(lambda x: abs(float(x)) < 200).all().all()
         for frame in analyst.values()
     )
     results.append(record("H", "Measurement outputs are finite and physically bounded", finite, "no NaN/Inf/extreme RH values"))
