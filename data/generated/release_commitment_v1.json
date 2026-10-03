@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "release_id": "VSM-LAB-DATA-v1",
+  "freeze_date": "2026-10-03",
+  "freeze_status": "PENDING_FINALIZATION",
+  "dataset_manifest_sha256": "8a24322f883f2bc3c42f870072e7f75b9ac8087492a7fa8c339e51ea9092c146",
+  "dr001_status": "PASS (10/10)",
+  "hidden_personality_id": "VSM-LAB-HP-v1",
+  "hidden_personality_sha256_commitment": "e534c04fb3718b4ae1dfe911c369bde3e1c37d922aaffeaa66bf400ebdbc1998",
+  "policy": "The release is not formally frozen until all analyst-facing release files and the DR-001 verification report are committed on this release branch and the final freeze record is completed."
+}
