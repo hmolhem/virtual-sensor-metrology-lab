@@ -189,16 +189,44 @@ Implemented the final on-disk verification gate required before the first analys
 
 Added `DR-001_Dataset_Release`, defined the exact release-candidate file set and freeze rule, and removed the deprecated `DataFrame.applymap` usage from MC-001.
 
-**Verification:** Gate implementation review; actual `DR-001` execution is intentionally deferred to the user's local generated files.
+**Verification:** Gate implementation review; actual `DR-001` execution was intentionally deferred to the user's local generated files.
 
-**Key outcome:** The locally generated `VSM-LAB-DATA-v1` release candidate now has a formal 10-check freeze procedure covering file presence, SHA-256 manifest integrity, row/test counts, schema leakage, quantization, numeric bounds, private-file exclusion, and manifest metadata. The release is not declared frozen until `DR-001 = PASS (10/10)` on the actual local files.
+**Key outcome:** The locally generated `VSM-LAB-DATA-v1` release candidate gained a formal 10-check freeze procedure covering file presence, SHA-256 manifest integrity, row/test counts, schema leakage, quantization, numeric bounds, private-file exclusion, and manifest metadata.
 
 **Handoff:** `docs/handoffs/HO-012_DATASET_RELEASE_FREEZE_GATE.md`
 
 ---
 
+## 2026-10-03 — HO-013 — Dataset Release v1 Freeze
+
+**Branch:** `release/finalize-vsm-lab-data-v1`
+
+Formally froze the first analyst-facing synthetic dataset release, `VSM-LAB-DATA-v1`, after the actual on-disk files passed `DR-001 = PASS (10/10)`.
+
+The release files and DR-001 evidence were committed, the dataset manifest SHA-256 was recorded as `8a24322f883f2bc3c42f870072e7f75b9ac8087492a7fa8c339e51ea9092c146`, and the release commitment was changed from pending to `FROZEN`.
+
+**Verification:** `MC-001 = PASS (8/8)` and `DR-001 = PASS (10/10)`.
+
+**Key outcome:** `VSM-LAB-DATA-v1` is now immutable by project policy and is eligible to become the input boundary for the separate DS 7140 analysis repository. Exact hidden simulator truth remains excluded from the analyst-facing release.
+
+**Handoff:** `docs/handoffs/HO-013_DATASET_RELEASE_V1_FREEZE.md`
+
+---
+
 ## Current engineering state
 
-The virtual laboratory now has verified simulator physics, verified experimental design, a verified public/private boundary, a frozen hidden laboratory personality, a verified full synthetic measurement-campaign engine, and a formal on-disk release-freeze gate.
+The Virtual Sensor Metrology Lab has completed its first full release cycle: simulator verification, experimental design, public/private boundary enforcement, hidden-personality freeze, production campaign generation, on-disk release verification, and formal dataset freeze.
 
-The full `VSM-LAB-DATA-v1` release candidate has been generated locally. It is awaiting one final on-disk `DR-001` verification before it may be declared frozen and transferred to the separate DS 7140 analysis repository.
+The first frozen analyst-facing release is:
+
+```text
+VSM-LAB-DATA-v1
+```
+
+with dataset-manifest SHA-256:
+
+```text
+8a24322f883f2bc3c42f870072e7f75b9ac8087492a7fa8c339e51ea9092c146
+```
+
+The next phase is to create the separate DS 7140 analysis repository and analyze this frozen release without using exact hidden simulator truth.

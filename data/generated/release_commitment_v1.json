@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "release_id": "VSM-LAB-DATA-v1",
+  "freeze_date": "2026-10-03",
+  "freeze_status": "FROZEN",
+  "dataset_manifest_sha256": "8a24322f883f2bc3c42f870072e7f75b9ac8087492a7fa8c339e51ea9092c146",
+  "dr001_status": "PASS (10/10)",
+  "hidden_personality_id": "VSM-LAB-HP-v1",
+  "hidden_personality_sha256_commitment": "e534c04fb3718b4ae1dfe911c369bde3e1c37d922aaffeaa66bf400ebdbc1998",
+  "dataset_commit_sha": "ab00064fb3b3f56014a6d4f7084a339de9254b9b",
+  "policy": "This release is frozen. Any change to analyst-facing release files, manifest contents, or release identity requires a new release ID and a new freeze verification."
+}

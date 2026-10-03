@@ -42,7 +42,7 @@ The current implementation is configured for an HVAC relative-humidity sensor, b
 
 ## What this repository does not own
 
-The following work belongs to the future **DS 7140 course-project repository** and will begin only after the laboratory releases a frozen dataset:
+The following work belongs to the separate **DS 7140 course-project repository**:
 
 - exploratory data analysis
 - analyst-side statistical characterization
@@ -61,7 +61,7 @@ Simulator verification calculations may appear here, but they exist only to prov
 
 ### Public / analyst-visible
 
-The future course repository may receive:
+The downstream course repository may receive:
 
 - DUT public specification and acceptance limits
 - reference-instrument public specification
@@ -94,9 +94,9 @@ The executable boundary policy is implemented in `src/config_boundary.py`, which
 
 ## Dataset release boundary
 
-The formal handoff from this laboratory to the future DS 7140 project is `data/generated/`.
+The formal handoff from this laboratory to the separate DS 7140 project is `data/generated/`.
 
-The intended release package is:
+The frozen release package is:
 
 ```text
 data/generated/
@@ -108,10 +108,23 @@ data/generated/
     stability_measurements.csv
     test_matrix.csv
     dataset_manifest.json
+    release_commitment_v1.json
     README.md
 ```
 
-Public specifications and release metadata may accompany the dataset under `config/public/` and in the manifest.
+The first frozen analyst-facing release is:
+
+```text
+VSM-LAB-DATA-v1
+```
+
+Dataset-manifest SHA-256:
+
+```text
+8a24322f883f2bc3c42f870072e7f75b9ac8087492a7fa8c339e51ea9092c146
+```
+
+Public specifications and release metadata accompany the dataset under `config/public/` and in the manifest.
 
 The downstream DS 7140 repository starts from this frozen release package and does not depend on simulator internals.
 
@@ -119,33 +132,33 @@ For the formal laboratory-to-course-project contract, see `docs/02_LAB_TO_DS7140
 
 ## Verified engineering baseline
 
-The current laboratory baseline has passed the following gates:
+The laboratory baseline has passed the following gates:
 
 - `SV-001` — static generator verification: **PASS (8/8)**
 - `SV-002` — dynamic generator verification: **PASS (10/10)**
 - reusable simulator-core regression verification: **PASS**
 - `ED-001` — experimental-design matrix verification: **PASS (11/11)**
 - `CB-001` — public/private configuration-boundary verification: **PASS (11/11)**
-
-This means the simulator core, predefined experimental design, and analyst/private information boundary have been verified before final hidden sensor truth is frozen.
+- `HP-001` — hidden laboratory personality commitment: **PASS (8/8)**
+- `MC-001` — full synthetic measurement campaign: **PASS (8/8)**
+- `DR-001` — on-disk dataset release verification: **PASS (10/10)**
 
 ## Current stage
 
-The project remains in the **virtual-laboratory construction phase**. The final course dataset has **not** been generated yet.
-
-Current sequence:
+The first Virtual Sensor Metrology Lab release cycle is complete.
 
 ```text
 Verified simulator core
         -> Verified experimental design
         -> Verified public/private configuration boundary
-        -> Freeze hidden DUT/reference/chamber truth   [NEXT]
-        -> Run full synthetic measurement campaign
-        -> Freeze analyst-facing dataset release
-        -> Create separate DS 7140 analysis repository
+        -> Frozen hidden DUT/reference/chamber personality
+        -> Full synthetic measurement campaign
+        -> DR-001 verified analyst-facing release
+        -> VSM-LAB-DATA-v1 FROZEN
+        -> Separate DS 7140 analysis repository   [NEXT]
 ```
 
-The next engineering milestone will define the final hidden laboratory personality without exposing it to the future analyst-facing data path.
+No further analysis of sensor performance belongs in this repository unless it is needed to verify the laboratory itself.
 
 ## Development workflow
 
@@ -174,8 +187,10 @@ Project continuity is maintained through three records:
 
 **Repository:** `hmolhem/virtual-sensor-metrology-lab`
 
-**Role:** Virtual laboratory + synthetic measurement dataset generation
+**Role:** Virtual laboratory + frozen synthetic measurement dataset generation
 
-**Downstream consumer:** A separate DS 7140 repository created only after the first frozen dataset release
+**Frozen release:** `VSM-LAB-DATA-v1`
+
+**Downstream consumer:** separate DS 7140 analysis repository
 
 For chronological status, see `docs/PROJECT_HISTORY.md`.
