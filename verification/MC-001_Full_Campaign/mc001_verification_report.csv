@@ -1,0 +1,9 @@
+Check,Description,Status,Detail
+A,Frozen hidden personality commitment,PASS,frozen personality hash matches commitment
+B,Analyst row counts match campaign design,PASS,"{'static': 15120, 'step': 9030, 'ramp': 21618, 'cyclic': 9003, 'sinusoidal': 5404, 'stability': 1320}"
+C,Unique test counts match experimental design,PASS,"{'static': 252, 'step': 30, 'ramp': 18, 'cyclic': 3, 'sinusoidal': 4, 'stability': 22}"
+D,Analyst schema contains no hidden-truth fields,PASS,no simulator-only analyst columns
+E,Campaign is bitwise reproducible in memory,PASS,all analyst DataFrames identical on repeated generation
+F,Private campaign products retain simulator truth separately,PASS,truth-bearing columns present only in private products
+G,Static DUT/reference quantization is preserved,PASS,DUT=0.1 %RH; reference=0.01 %RH
+H,Measurement outputs are finite and physically bounded,PASS,no NaN/Inf/extreme RH values
