@@ -121,10 +121,26 @@ Refreshed the repository landing page so the visible project identity, laborator
 
 ---
 
+## 2026-10-03 — HO-008 — Public / Private Configuration Boundary
+
+**Branch:** `feature/public-private-config-boundary`
+
+Implemented the executable information boundary between analyst-visible laboratory specifications and simulator-only hidden truth.
+
+Added the canonical tracked public specification at `config/public/lab_spec_v1.json`, a protected private loader and analyst-output leakage gate in `src/config_boundary.py`, and explicit policy documentation for `config/private/` and `data/private_truth/`.
+
+**Verification:** `CB-001 = PASS (11/11)`
+
+**Key outcome:** Public configuration can now be loaded and released independently of private simulator truth. Private truth loading is restricted to `config/private/`, private paths remain Git-protected, and analyst-facing serialization fails closed when simulator-only fields are detected. No final hidden DUT/reference/chamber values were frozen in this milestone.
+
+**Handoff:** `docs/handoffs/HO-008_PUBLIC_PRIVATE_CONFIG_BOUNDARY.md`
+
+---
+
 ## Current engineering state
 
-The virtual laboratory has passed the static and dynamic simulator verification gates, the verified behavior has been refactored into reusable core modules, and the experimental design has been defined and verified.
+The virtual laboratory has passed the static and dynamic simulator verification gates, the verified behavior has been refactored into reusable core modules, the experimental design has been defined and verified, and the public/private configuration boundary has passed CB-001.
 
-The repository boundary is explicit: this repository stops at the frozen analyst-facing dataset release. A separate DS 7140 repository will begin from that release.
+The repository boundary remains explicit: this repository stops at the frozen analyst-facing dataset release. A separate DS 7140 repository will begin from that release.
 
-The next technical milestone is to define and verify the public/private configuration boundary and then freeze the hidden DUT/reference/chamber parameter set before generating the full synthetic measurement campaign.
+The next technical milestone is to freeze the final hidden DUT/reference/chamber laboratory personality locally/private, sanity-check it against the public specifications and intended mixed pass/borderline/fail behavior, and only then generate the full synthetic measurement campaign.
