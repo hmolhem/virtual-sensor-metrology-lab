@@ -1,0 +1,9 @@
+Check,Description,Status,Detail
+A,Commitment identity is correct,PASS,VSM-LAB-HP-v1
+B,Private file loads only from protected path,PASS,config/private policy enforced
+C,Private schema version is correct,PASS,1.0
+D,SHA-256 commitment matches sealed file,PASS,e534c04fb3718b4ae1dfe911c369bde3e1c37d922aaffeaa66bf400ebdbc1998
+E,Required hidden domains are present,PASS,DUT/reference/chamber/random-effects/RNG domains present
+F,Basic physical and range sanity checks pass,PASS,no exact hidden values disclosed
+G,Deterministic campaign seed is present,PASS,seed value remains private
+H,Mixed pass/borderline/fail proxy behavior is present,PASS,metric-level classifications remain private
