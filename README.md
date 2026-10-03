@@ -71,6 +71,12 @@ The future course repository may receive:
 - timestamps and measured channels
 - dataset manifest, schema, and provenance
 
+The canonical public laboratory specification is tracked at:
+
+```text
+config/public/lab_spec_v1.json
+```
+
 ### Private / simulator-only
 
 The analyst must not receive the exact hidden values used to create the synthetic sensor behavior, including:
@@ -82,7 +88,9 @@ The analyst must not receive the exact hidden values used to create the syntheti
 - chamber hidden bias/nonuniformity/error parameters
 - latent true environmental states and injected error components
 
-Final private simulator truth is kept outside the analyst-facing tracked data path.
+Final private simulator configuration is restricted to local files under `config/private/`, while simulator-only truth products are restricted to local files under `data/private_truth/`. Both paths are protected by `.gitignore`.
+
+The executable boundary policy is implemented in `src/config_boundary.py`, which validates public configuration, restricts private truth loading to the protected directory, and blocks simulator-only field names from analyst-facing serialized payloads.
 
 ## Dataset release boundary
 
@@ -117,24 +125,27 @@ The current laboratory baseline has passed the following gates:
 - `SV-002` — dynamic generator verification: **PASS (10/10)**
 - reusable simulator-core regression verification: **PASS**
 - `ED-001` — experimental-design matrix verification: **PASS (11/11)**
+- `CB-001` — public/private configuration-boundary verification: **PASS (11/11)**
 
-This means the static/dynamic simulator core and the predefined experimental design have been verified before final hidden sensor truth is frozen.
+This means the simulator core, predefined experimental design, and analyst/private information boundary have been verified before final hidden sensor truth is frozen.
 
 ## Current stage
 
-The project is still in the **virtual-laboratory construction phase**. The final course dataset has **not** been generated yet.
+The project remains in the **virtual-laboratory construction phase**. The final course dataset has **not** been generated yet.
 
 Current sequence:
 
 ```text
 Verified simulator core
         -> Verified experimental design
-        -> Public/private configuration boundary   [NEXT]
-        -> Freeze hidden DUT/reference/chamber truth
+        -> Verified public/private configuration boundary
+        -> Freeze hidden DUT/reference/chamber truth   [NEXT]
         -> Run full synthetic measurement campaign
         -> Freeze analyst-facing dataset release
         -> Create separate DS 7140 analysis repository
 ```
+
+The next engineering milestone will define the final hidden laboratory personality without exposing it to the future analyst-facing data path.
 
 ## Development workflow
 
