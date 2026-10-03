@@ -137,10 +137,24 @@ Added the canonical tracked public specification at `config/public/lab_spec_v1.j
 
 ---
 
+## 2026-10-03 — HO-009 — Hidden Laboratory Personality Freeze
+
+**Branch:** `feature/freeze-hidden-lab-personality`
+
+Generated and sealed the final simulator-only DUT/reference/chamber personality outside Git, including static behavior, hierarchical random effects, drift, dynamics, chamber/reference behavior, and deterministic RNG policy.
+
+**Verification:** `HP-001 = PASS (8/8)`
+
+**Key outcome:** The laboratory now has one frozen private personality identified as `VSM-LAB-HP-v1`. Exact values remain local under `config/private/`; Git records only a SHA-256 commitment and a verification gate. The hidden design was accepted only after confirming a deliberate mixture of pass-like, borderline-like, and fail-like proxy behavior without disclosing which metrics belong to which category.
+
+**Handoff:** `docs/handoffs/HO-009_HIDDEN_LAB_PERSONALITY_FREEZE.md`
+
+---
+
 ## Current engineering state
 
-The virtual laboratory has passed the static and dynamic simulator verification gates, the verified behavior has been refactored into reusable core modules, the experimental design has been defined and verified, and the public/private configuration boundary has passed CB-001.
+The virtual laboratory has passed the static and dynamic simulator verification gates, the experimental design is verified, the public/private configuration boundary has passed CB-001, and the final hidden laboratory personality is now frozen and cryptographically committed.
 
 The repository boundary remains explicit: this repository stops at the frozen analyst-facing dataset release. A separate DS 7140 repository will begin from that release.
 
-The next technical milestone is to freeze the final hidden DUT/reference/chamber laboratory personality locally/private, sanity-check it against the public specifications and intended mixed pass/borderline/fail behavior, and only then generate the full synthetic measurement campaign.
+The next technical milestone is to execute the full synthetic measurement campaign from the sealed private personality, generate analyst-facing static/dynamic/stability datasets plus protected private truth, verify campaign integrity, and freeze the first dataset release.
