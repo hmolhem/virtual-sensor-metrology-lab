@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "personality_id": "VSM-LAB-HP-v1",
+  "private_filename": "final_lab_personality_v1.json",
+  "frozen_date": "2026-10-03",
+  "hash_algorithm": "SHA-256",
+  "canonicalization": "json.dumps(sort_keys=True,separators=(',',':'),ensure_ascii=False)",
+  "sha256": "e534c04fb3718b4ae1dfe911c369bde3e1c37d922aaffeaa66bf400ebdbc1998",
+  "disclosure_policy": "Exact DUT/reference/chamber personality values remain simulator-only under config/private and are not committed."
+}
