@@ -1,0 +1,11 @@
+Check,Description,Status,Detail
+A,Required release files exist,PASS,all required files present
+B,Release identity and frozen hidden-personality commitment match,PASS,release_id=VSM-LAB-DATA-v1
+C,On-disk CSV hashes match dataset_manifest.json,PASS,all CSV hashes match
+D,On-disk row counts match the frozen campaign design,PASS,"{'static_measurements.csv': 15120, 'dynamic_step_measurements.csv': 9030, 'ramp_measurements.csv': 21618, 'cyclic_measurements.csv': 9003, 'sinusoidal_measurements.csv': 5404, 'stability_measurements.csv': 1320, 'test_matrix.csv': 333}"
+E,On-disk unique test counts match the experimental design,PASS,"{'static_measurements.csv': 252, 'dynamic_step_measurements.csv': 30, 'ramp_measurements.csv': 18, 'cyclic_measurements.csv': 3, 'sinusoidal_measurements.csv': 4, 'stability_measurements.csv': 22}"
+F,Analyst-facing CSV schemas contain no hidden-truth fields,PASS,no simulator-only columns in analyst CSV files
+G,Static DUT/reference quantization is preserved on disk,PASS,DUT=0.1 %RH; reference=0.01 %RH
+H,Released measurement outputs are finite and physically bounded,PASS,no NaN/Inf/extreme RH values
+I,Release directory contains no private simulator-truth files,PASS,no private files present
+J,Manifest row metadata agrees with the frozen release,PASS,manifest row metadata verified

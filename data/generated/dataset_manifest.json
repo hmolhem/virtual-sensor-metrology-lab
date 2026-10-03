@@ -1,0 +1,171 @@
+{
+  "analyst_private_truth_included": false,
+  "files": {
+    "cyclic_measurements.csv": {
+      "columns": [
+        "Elapsed_s",
+        "Sample_ID",
+        "Test_ID",
+        "Test_Family",
+        "RH_Command",
+        "Temperature_Setpoint_C",
+        "Direction",
+        "Chamber_State",
+        "RH_Reference",
+        "RH_DUT",
+        "Temperature_Reference_C",
+        "Temperature_DUT_C",
+        "Session",
+        "Cycle_Index"
+      ],
+      "rows": 9003,
+      "sha256": "f9379d3119e7dfbb21301278907790d39204e14c8d31ce5d27ccc2429a38bb2c"
+    },
+    "dynamic_step_measurements.csv": {
+      "columns": [
+        "Elapsed_s",
+        "Sample_ID",
+        "Test_ID",
+        "Test_Family",
+        "RH_Command",
+        "Temperature_Setpoint_C",
+        "Direction",
+        "Chamber_State",
+        "RH_Reference",
+        "RH_DUT",
+        "Temperature_Reference_C",
+        "Temperature_DUT_C",
+        "Repetition"
+      ],
+      "rows": 9030,
+      "sha256": "1dd80275b7c80377c99cd0e4cb2110ed9aad8346b336fa42c0bc52f02d3bd592"
+    },
+    "ramp_measurements.csv": {
+      "columns": [
+        "Elapsed_s",
+        "Sample_ID",
+        "Test_ID",
+        "Test_Family",
+        "RH_Command",
+        "Temperature_Setpoint_C",
+        "Direction",
+        "Chamber_State",
+        "RH_Reference",
+        "RH_DUT",
+        "Temperature_Reference_C",
+        "Temperature_DUT_C",
+        "Repetition"
+      ],
+      "rows": 21618,
+      "sha256": "79d168de922c15358029106f5d7553da9287ee39d8fc33fed98c706c9024f812"
+    },
+    "sinusoidal_measurements.csv": {
+      "columns": [
+        "Elapsed_s",
+        "Sample_ID",
+        "Test_ID",
+        "Test_Family",
+        "RH_Command",
+        "Temperature_Setpoint_C",
+        "Direction",
+        "Chamber_State",
+        "RH_Reference",
+        "RH_DUT",
+        "Temperature_Reference_C",
+        "Temperature_DUT_C",
+        "Period_s",
+        "Frequency_Hz"
+      ],
+      "rows": 5404,
+      "sha256": "a3bcd74e3604d50aa047a58d5ac6bf6412d4b30d1f21bffa2a734f9130eeb8eb"
+    },
+    "stability_measurements.csv": {
+      "columns": [
+        "Elapsed_s",
+        "Sample_ID",
+        "Test_ID",
+        "Test_Family",
+        "Schedule_Type",
+        "Aging_Day",
+        "RH_Setpoint",
+        "Temperature_Setpoint_C",
+        "Direction",
+        "Chamber_State",
+        "RH_Reference",
+        "RH_DUT",
+        "Temperature_Reference_C",
+        "Temperature_DUT_C"
+      ],
+      "rows": 1320,
+      "sha256": "cd519d42a0f93a5defcd067908702ae907247fa726cefcb4c2d1187023ab5d4b"
+    },
+    "static_measurements.csv": {
+      "columns": [
+        "Elapsed_s",
+        "Sample_ID",
+        "Test_ID",
+        "Test_Family",
+        "Analysis_Role",
+        "Day_ID",
+        "Run_ID",
+        "RH_Setpoint",
+        "Temperature_Setpoint_C",
+        "Direction",
+        "Chamber_State",
+        "RH_Reference",
+        "RH_DUT",
+        "Temperature_Reference_C",
+        "Temperature_DUT_C"
+      ],
+      "rows": 15120,
+      "sha256": "3f34e8a9bc31a81e32700d7347f96947351770e1b2c208e5b37e78537a235dd8"
+    },
+    "test_matrix.csv": {
+      "columns": [
+        "Test_ID",
+        "Test_Family",
+        "Analysis_Role",
+        "RH_Setpoint",
+        "Temperature_Setpoint_C",
+        "Direction",
+        "Day_ID",
+        "Run_ID",
+        "Hold_s",
+        "Sample_Rate_Hz",
+        "Expected_Samples",
+        "Chamber_State_Required",
+        "RH_Start",
+        "RH_End",
+        "Repetition",
+        "Baseline_s",
+        "Transient_s",
+        "Duration_s",
+        "Primary_Metrics",
+        "Ramp_Rate_RH_per_min",
+        "RH_Low",
+        "RH_High",
+        "Session",
+        "Cycle_Count",
+        "RH_Center",
+        "RH_Amplitude",
+        "Period_s",
+        "Frequency_Hz",
+        "Schedule_Type",
+        "Aging_Day",
+        "Point_Type"
+      ],
+      "rows": 333,
+      "sha256": "51302b9ece317bf39759a21518bb67c3b93e65f9f9b2c750963d867f74a9cb14"
+    }
+  },
+  "hidden_personality_id": "VSM-LAB-HP-v1",
+  "hidden_personality_sha256_commitment": "e534c04fb3718b4ae1dfe911c369bde3e1c37d922aaffeaa66bf400ebdbc1998",
+  "lab": {
+    "campaign": "HVAC Relative-Humidity Sensor Validation",
+    "measurand": "relative_humidity",
+    "name": "Virtual Sensor Metrology Lab",
+    "units": "%RH"
+  },
+  "release_id": "VSM-LAB-DATA-v1",
+  "schema_version": "1.0"
+}
