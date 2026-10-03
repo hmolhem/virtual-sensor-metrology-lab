@@ -181,10 +181,24 @@ Added a public campaign-execution protocol, deterministic full campaign generato
 
 ---
 
+## 2026-10-03 — HO-012 — Dataset Release Freeze Gate
+
+**Branch:** `release/freeze-dataset-v1`
+
+Implemented the final on-disk verification gate required before the first analyst-facing dataset release can be formally frozen.
+
+Added `DR-001_Dataset_Release`, defined the exact release-candidate file set and freeze rule, and removed the deprecated `DataFrame.applymap` usage from MC-001.
+
+**Verification:** Gate implementation review; actual `DR-001` execution is intentionally deferred to the user's local generated files.
+
+**Key outcome:** The locally generated `VSM-LAB-DATA-v1` release candidate now has a formal 10-check freeze procedure covering file presence, SHA-256 manifest integrity, row/test counts, schema leakage, quantization, numeric bounds, private-file exclusion, and manifest metadata. The release is not declared frozen until `DR-001 = PASS (10/10)` on the actual local files.
+
+**Handoff:** `docs/handoffs/HO-012_DATASET_RELEASE_FREEZE_GATE.md`
+
+---
+
 ## Current engineering state
 
-The virtual laboratory now has verified simulator physics, verified experimental design, a verified public/private boundary, a frozen hidden laboratory personality, and a verified full synthetic measurement-campaign engine.
+The virtual laboratory now has verified simulator physics, verified experimental design, a verified public/private boundary, a frozen hidden laboratory personality, a verified full synthetic measurement-campaign engine, and a formal on-disk release-freeze gate.
 
-The repository boundary remains explicit: this repository stops at the frozen analyst-facing dataset release. A separate DS 7140 repository will begin from that release.
-
-The next technical milestone is to run the full campaign locally from the sealed personality, inspect the generated analyst-facing files and manifest, rerun MC-001 in the DS environment, and freeze the first analyst-facing dataset release.
+The full `VSM-LAB-DATA-v1` release candidate has been generated locally. It is awaiting one final on-disk `DR-001` verification before it may be declared frozen and transferred to the separate DS 7140 analysis repository.
