@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "release_id": "VSM-LAB-DATA-v1",
+  "sample_rate_hz": 1.0,
+  "static": {
+    "hold_s": 60,
+    "samples_per_test": 60
+  },
+  "dynamic_step": {
+    "baseline_s": 60,
+    "transient_s": 240,
+    "duration_s": 300,
+    "samples_per_test": 301
+  },
+  "dynamic_ramp": {
+    "rate_rh_percent_per_min": 2.0,
+    "samples_per_test": 1201
+  },
+  "dynamic_cyclic": {
+    "waveform": "triangular",
+    "half_cycle_s": 300,
+    "cycles_per_session": 5,
+    "samples_per_session": 3001
+  },
+  "dynamic_sinusoidal": {
+    "cycles_per_period": 5,
+    "periods_s": [600, 300, 120, 60]
+  },
+  "stability": {
+    "hold_s": 60,
+    "samples_per_check": 60,
+    "approach_direction": "UP"
+  },
+  "serialization": {
+    "csv_float_format": "%.6f",
+    "csv_line_terminator": "\\n",
+    "manifest_hash_algorithm": "SHA-256"
+  }
+}
