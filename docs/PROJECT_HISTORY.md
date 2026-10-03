@@ -165,10 +165,26 @@ Updated `.gitignore` so local `.vscode/` workspace metadata is ignored rather th
 
 ---
 
+## 2026-10-03 — HO-011 — Full Synthetic Measurement Campaign Engine
+
+**Branch:** `feature/full-synthetic-measurement-campaign`
+
+Implemented the production measurement-campaign layer that applies the frozen DUT/reference/chamber personality to the verified experimental design while keeping analyst-facing and simulator-only products separate.
+
+Added a public campaign-execution protocol, deterministic full campaign generator, SHA-256 release-manifest support, and MC-001 verification.
+
+**Verification:** `MC-001 = PASS (8/8)`
+
+**Key outcome:** The laboratory can now generate the complete static, dynamic-step, ramp, cyclic, sinusoidal, and stability measurement campaign reproducibly. Analyst schemas contain no simulator-only truth fields, while protected private campaign products retain latent truth for a later post-analysis audit. The analyst-facing dataset has not yet been formally frozen; that will occur only after a local campaign run and release inspection.
+
+**Handoff:** `docs/handoffs/HO-011_FULL_SYNTHETIC_MEASUREMENT_CAMPAIGN_ENGINE.md`
+
+---
+
 ## Current engineering state
 
-The virtual laboratory has passed the static and dynamic simulator verification gates, the experimental design is verified, the public/private configuration boundary has passed CB-001, and the final hidden laboratory personality is frozen and cryptographically committed.
+The virtual laboratory now has verified simulator physics, verified experimental design, a verified public/private boundary, a frozen hidden laboratory personality, and a verified full synthetic measurement-campaign engine.
 
 The repository boundary remains explicit: this repository stops at the frozen analyst-facing dataset release. A separate DS 7140 repository will begin from that release.
 
-The next technical milestone is to execute the full synthetic measurement campaign from the sealed private personality, generate analyst-facing static/dynamic/stability datasets plus protected private truth, verify campaign integrity, and freeze the first dataset release.
+The next technical milestone is to run the full campaign locally from the sealed personality, inspect the generated analyst-facing files and manifest, rerun MC-001 in the DS environment, and freeze the first analyst-facing dataset release.
