@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "lab_identity": {
+    "name": "Virtual Sensor Metrology Lab",
+    "campaign": "HVAC Relative-Humidity Sensor Validation",
+    "measurand": "relative_humidity",
+    "units": "%RH"
+  },
+  "dut_public_spec": {
+    "rh_operating_range_percent": [20.0, 80.0],
+    "temperature_operating_range_c": [15.0, 35.0],
+    "reference_temperature_c": 25.0,
+    "resolution_rh_percent": 0.1,
+    "acceptance_limits": {
+      "static_accuracy_abs_rh_percent": 2.0,
+      "repeatability_sigma_max_rh_percent": 0.30,
+      "hysteresis_max_rh_percent": 1.0,
+      "linearity_max_rh_percent": 1.0,
+      "temperature_influence_max_rh_percent_per_c": 0.05,
+      "t90_max_s": 60.0,
+      "settling_band_abs_rh_percent": 1.0,
+      "drift_max_rh_percent_per_year": 0.8
+    }
+  },
+  "reference_public_spec": {
+    "rh_project_range_percent": [20.0, 80.0],
+    "temperature_project_range_c": [15.0, 35.0],
+    "resolution_rh_percent": 0.01,
+    "expanded_calibration_uncertainty_rh_percent": 0.40,
+    "coverage_factor_k": 2.0,
+    "repeatability_sigma_max_rh_percent": 0.05,
+    "drift_max_rh_percent_per_year": 0.15,
+    "t90_max_s": 10.0,
+    "calibration_interval_years": 1.0,
+    "traceability_assumption": "SI-traceable accredited calibration"
+  },
+  "chamber_public_spec": {
+    "rh_project_range_percent": [20.0, 80.0],
+    "temperature_project_range_c": [15.0, 35.0],
+    "rh_setpoint_resolution_percent": 0.1,
+    "temperature_setpoint_resolution_c": 0.1,
+    "rh_stability_abs_percent": 0.20,
+    "temperature_stability_abs_c": 0.10,
+    "rh_uniformity_abs_percent": 0.30,
+    "temperature_uniformity_abs_c": 0.20,
+    "stable_state_rh_band_abs_percent": 0.50,
+    "stable_state_temperature_band_abs_c": 0.20,
+    "states": ["TRANSIENT", "SETTLING", "STABLE"]
+  },
+  "daq_public_spec": {
+    "nominal_sampling_hz": 1.0,
+    "nominal_sample_interval_s": 1.0,
+    "timestamp_resolution_s": 0.1,
+    "optional_timestamp_jitter_sigma_s": 0.02,
+    "synchronization_target_abs_s": 0.1,
+    "dut_quantization_rh_percent": 0.1,
+    "reference_quantization_rh_percent": 0.01,
+    "raw_data_immutable": true
+  },
+  "experimental_design": {
+    "static": {
+      "rh_setpoints_percent": [20, 30, 40, 50, 60, 70, 80],
+      "temperature_setpoints_c": [15, 25, 35],
+      "directions": ["UP", "DOWN"],
+      "days": [1, 2, 3],
+      "runs_per_day": 2,
+      "stable_hold_s": 60,
+      "condition_holds": 252,
+      "role_policy": {
+        "calibration": "Days 1-2 and RH setpoints 20, 40, 60, 80",
+        "validation": "Day 3 and RH setpoints 30, 50, 70",
+        "characterization": "All remaining static condition-holds"
+      }
+    },
+    "dynamic": {
+      "step_pairs_rh_percent": [[30, 70], [70, 30]],
+      "step_temperatures_c": [15, 25, 35],
+      "step_repetitions": 5,
+      "step_baseline_s": 60,
+      "step_transient_s": 240,
+      "ramp_pairs_rh_percent": [[30, 70], [70, 30]],
+      "ramp_rate_rh_percent_per_min": 2.0,
+      "ramp_repetitions_per_temperature": 3,
+      "cyclic_center_temperature_c": 25.0,
+      "cyclic_low_high_rh_percent": [30, 70],
+      "cyclic_cycles_per_session": 5,
+      "cyclic_sessions": 3,
+      "sinusoidal_center_rh_percent": 50.0,
+      "sinusoidal_amplitude_rh_percent": 10.0,
+      "sinusoidal_periods_s": [600, 300, 120, 60]
+    },
+    "stability": {
+      "campaign_days": 90,
+      "weekly_check_rh_percent": 50,
+      "weekly_check_temperature_c": 25,
+      "monthly_check_days": [30, 60, 90],
+      "monthly_rh_points_percent": [30, 50, 70]
+    },
+    "uncertainty_evaluation_points": [
+      {"rh_percent": 30, "temperature_c": 25},
+      {"rh_percent": 50, "temperature_c": 25},
+      {"rh_percent": 70, "temperature_c": 25},
+      {"rh_percent": 80, "temperature_c": 35}
+    ]
+  }
+}

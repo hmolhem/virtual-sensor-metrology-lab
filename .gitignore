@@ -233,6 +233,8 @@ verification/SV-001_Static/sv001_private_truth.csv
 verification/SV-002_Dynamic/sv002_analyst_fixture.csv
 verification/SV-002_Dynamic/sv002_private_fixture.csv
 verification/ED-001_Experimental_Design/ed001_*_matrix.csv
+verification/CB-001_Config_Boundary/cb001_private_fixture.json
+verification/CB-001_Config_Boundary/cb001_analyst_output.json
 
 # Local scratch / exports
 scratch/
