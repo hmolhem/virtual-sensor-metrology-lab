@@ -46,6 +46,22 @@ FORBIDDEN_EXACT_KEYS = frozenset(
         "dut_truth",
         "reference_truth",
         "chamber_truth",
+        "offset_rh_percent",
+        "bias_rh_percent",
+        "gain_error",
+        "gain_scale",
+        "nonlinearity_coefficient",
+        "temperature_coefficient",
+        "interaction_coefficient",
+        "hysteresis_rh_percent",
+        "drift_rh_percent_per_year",
+        "tau_up_s",
+        "tau_down_s",
+        "dead_time_s",
+        "day_effect",
+        "run_effect",
+        "reference_bias_rh_percent",
+        "chamber_bias_rh_percent",
     }
 )
 
