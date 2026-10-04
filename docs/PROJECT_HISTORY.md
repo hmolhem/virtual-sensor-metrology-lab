@@ -207,26 +207,54 @@ The release files and DR-001 evidence were committed, the dataset manifest SHA-2
 
 **Verification:** `MC-001 = PASS (8/8)` and `DR-001 = PASS (10/10)`.
 
-**Key outcome:** `VSM-LAB-DATA-v1` is now immutable by project policy and is eligible to become the input boundary for the separate DS 7140 analysis repository. Exact hidden simulator truth remains excluded from the analyst-facing release.
+**Key outcome:** `VSM-LAB-DATA-v1` is historically frozen by project policy. A later downstream intake exposed that its manifest commitment reflected CRLF working-tree bytes rather than the LF bytes stored in Git, leading to the corrective HO-014 release without changing measurement payloads.
 
 **Handoff:** `docs/handoffs/HO-013_DATASET_RELEASE_V1_FREEZE.md`
 
 ---
 
+## 2026-10-03 — HO-014 — Cross-Platform Release Integrity Correction
+
+**Branch:** `release/vsm-lab-data-v1-1-integrity-correction`
+
+Investigated a downstream SHA-256 mismatch and traced it to Windows `core.autocrlf=true`: the v1 manifest had been hashed as CRLF in the working tree before Git normalized it to LF in the committed blob.
+
+Added explicit canonical-LF rules in `.gitattributes`, created corrective release `VSM-LAB-DATA-v1.1`, preserved all seven CSV payload commitments and schemas, added DR-002 cross-platform release verification, and recorded final evidence.
+
+**Verification:** `DR-002 = PASS (11/11)`.
+
+**Key outcome:** `VSM-LAB-DATA-v1.1` is the canonical frozen analyst-facing release. Its manifest SHA-256 is `efd9e79958b9d7c7b8730ee9015c72c3e8205effd03c686ff58b03454188f847`; the measurement payload is unchanged from historical v1, and future release artifacts have an explicit cross-platform byte-integrity policy.
+
+**Handoff:** `docs/handoffs/HO-014_CROSS_PLATFORM_RELEASE_INTEGRITY_CORRECTION.md`
+
+---
+
 ## Current engineering state
 
-The Virtual Sensor Metrology Lab has completed its first full release cycle: simulator verification, experimental design, public/private boundary enforcement, hidden-personality freeze, production campaign generation, on-disk release verification, and formal dataset freeze.
+The Virtual Sensor Metrology Lab has completed its first release cycle plus a cross-platform provenance correction.
 
-The first frozen analyst-facing release is:
+The historical first release remains:
 
 ```text
 VSM-LAB-DATA-v1
 ```
 
-with dataset-manifest SHA-256:
+The canonical downstream analyst-facing release is now:
 
 ```text
-8a24322f883f2bc3c42f870072e7f75b9ac8087492a7fa8c339e51ea9092c146
+VSM-LAB-DATA-v1.1
 ```
 
-The next phase is to create the separate DS 7140 analysis repository and analyze this frozen release without using exact hidden simulator truth.
+with canonical dataset-manifest SHA-256:
+
+```text
+efd9e79958b9d7c7b8730ee9015c72c3e8205effd03c686ff58b03454188f847
+```
+
+and final release-integrity verification:
+
+```text
+DR-002 = PASS (11/11)
+```
+
+The seven measurement/design CSV payload commitments remain unchanged from v1. The next phase is downstream analysis of the frozen v1.1 release without using exact hidden simulator truth.
