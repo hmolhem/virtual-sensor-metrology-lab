@@ -183,13 +183,13 @@ def main() -> int:
     no_private_files = not leaked
     results.append(record("J", "No private simulator-truth files are tracked in the release directory", no_private_files, "no private files tracked" if no_private_files else f"leaked={leaked}"))
 
-    commitment_ok = (
-        commitment.get("freeze_status") == "CANDIDATE"
+    frozen_ok = (
+        commitment.get("freeze_status") == "FROZEN"
         and commitment.get("verification_gate") == "DR-002"
-        and commitment.get("verification_status") == "PENDING"
+        and commitment.get("verification_status") == "PASS (11/11)"
         and commitment.get("measurement_payload_changed") is False
     )
-    results.append(record("K", "Corrective release commitment is in the expected pre-freeze state", commitment_ok, f"freeze_status={commitment.get('freeze_status')}; verification_status={commitment.get('verification_status')}"))
+    results.append(record("K", "Corrective release commitment is in the final frozen state", frozen_ok, f"freeze_status={commitment.get('freeze_status')}; verification_status={commitment.get('verification_status')}"))
 
     write_report(results)
     passed = sum(row["Status"] == "PASS" for row in results)
@@ -198,7 +198,7 @@ def main() -> int:
         print(f"{row['Check']}: {row['Status']} - {row['Description']}")
 
     if passed == len(results):
-        print("VSM-LAB-DATA-v1.1 corrective release candidate is eligible for final freeze metadata update.")
+        print("VSM-LAB-DATA-v1.1 corrective release is frozen and cross-platform integrity is verified.")
     return 0 if passed == len(results) else 1
 
 
