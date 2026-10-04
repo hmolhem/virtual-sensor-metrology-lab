@@ -4,13 +4,15 @@ This directory is the formal boundary for **analyst-facing synthetic measurement
 
 Only public measurement data and public metadata belong here. Private simulator truth, latent states, exact hidden parameters, injected error components, and private configuration files must never be included in this release path.
 
-## Frozen release
+## Canonical frozen release
 
-The first frozen analyst-facing release is:
+The canonical analyst-facing release is:
 
 ```text
-VSM-LAB-DATA-v1
+VSM-LAB-DATA-v1.1
 ```
+
+This is a corrective release of the historical `VSM-LAB-DATA-v1` package. The correction addresses cross-platform line-ending/provenance integrity only; the seven measurement/design CSV payload commitments, schemas, row counts, and hidden-personality commitment are unchanged from v1.
 
 It contains:
 
@@ -22,53 +24,60 @@ It contains:
 - `stability_measurements.csv`
 - `test_matrix.csv`
 - `dataset_manifest.json`
-- `release_commitment_v1.json`
+- `release_commitment_v1_1.json`
 
 The simulator-only counterpart remains under `data/private_truth/` and is excluded from the analyst release.
 
+## Historical release note
+
+`VSM-LAB-DATA-v1` remains historically frozen. During downstream intake, its recorded manifest SHA-256 was found to correspond to CRLF working-tree bytes, while Git stored the manifest with LF line endings. The measurement payload itself was not corrupted or changed.
+
+HO-014 introduced canonical LF policy and the corrective `VSM-LAB-DATA-v1.1` release rather than rewriting v1 in place.
+
 ## Freeze verification
 
-The actual on-disk release passed:
+The canonical corrective release passed:
 
 ```text
-DR-001 = PASS (10/10)
+DR-002 = PASS (11/11)
 ```
 
 using:
 
 ```text
-verification/DR-001_Dataset_Release/dr001_dataset_release_verification.py
+verification/DR-002_Cross_Platform_Release_Integrity/dr002_cross_platform_release_integrity.py
 ```
 
-`DR-001` verified:
+DR-002 verifies release identity and parent linkage, canonical LF policy, committed manifest SHA-256, CSV payload hashes, payload preservation relative to v1, manifest semantic scope, committed line endings, row/schema integrity, analyst/private separation, private-file exclusion, and final frozen commitment state.
 
-1. all required analyst-facing files exist;
-2. release identity and hidden-personality commitment match;
-3. on-disk CSV SHA-256 hashes match `dataset_manifest.json`;
-4. row counts match the approved campaign design;
-5. unique Test-ID counts match the experimental design;
-6. analyst-facing schemas contain no hidden-truth fields;
-7. DUT/reference quantization is preserved;
-8. released measurements are finite and physically bounded;
-9. no private simulator-truth files are present in `data/generated/`;
-10. manifest row metadata agrees with the actual files.
+The final evidence is tracked at:
+
+```text
+verification/DR-002_Cross_Platform_Release_Integrity/dr002_verification_report.csv
+```
 
 ## Release commitment
 
-Dataset-manifest SHA-256:
+Canonical v1.1 dataset-manifest SHA-256:
 
 ```text
-8a24322f883f2bc3c42f870072e7f75b9ac8087492a7fa8c339e51ea9092c146
+efd9e79958b9d7c7b8730ee9015c72c3e8205effd03c686ff58b03454188f847
 ```
 
-The authoritative freeze metadata is recorded in:
+The authoritative corrective-release metadata is recorded in:
 
 ```text
-release_commitment_v1.json
+release_commitment_v1_1.json
 ```
+
+The historical v1 commitment remains in `release_commitment_v1.json` for provenance.
+
+## Canonical line endings
+
+Repository `.gitattributes` rules enforce LF for analyst-facing CSV/JSON release artifacts and verification evidence so byte-level SHA-256 commitments remain reproducible across platforms.
 
 ## Immutability rule
 
-`VSM-LAB-DATA-v1` is frozen and immutable by project policy.
+`VSM-LAB-DATA-v1.1` is frozen and immutable by project policy.
 
 Any change to analyst-facing release content, manifest contents, or release identity requires a new release ID and a fresh release-verification/freeze cycle.

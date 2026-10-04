@@ -166,6 +166,6 @@
     "name": "Virtual Sensor Metrology Lab",
     "units": "%RH"
   },
-  "release_id": "VSM-LAB-DATA-v1",
+  "release_id": "VSM-LAB-DATA-v1.1",
   "schema_version": "1.0"
 }
