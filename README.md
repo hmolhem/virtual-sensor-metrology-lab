@@ -96,7 +96,7 @@ The executable boundary policy is implemented in `src/config_boundary.py`, which
 
 The formal handoff from this laboratory to the separate DS 7140 project is `data/generated/`.
 
-The frozen release package is:
+The canonical frozen release package is:
 
 ```text
 data/generated/
@@ -108,21 +108,25 @@ data/generated/
     stability_measurements.csv
     test_matrix.csv
     dataset_manifest.json
-    release_commitment_v1.json
+    release_commitment_v1_1.json
     README.md
 ```
 
-The first frozen analyst-facing release is:
+The canonical analyst-facing release is:
 
 ```text
-VSM-LAB-DATA-v1
+VSM-LAB-DATA-v1.1
 ```
 
-Dataset-manifest SHA-256:
+This is a corrective release of historical `VSM-LAB-DATA-v1`; the seven measurement/design CSV payload commitments are unchanged. The correction establishes canonical LF line endings and a byte-reproducible manifest commitment.
+
+Canonical dataset-manifest SHA-256:
 
 ```text
-8a24322f883f2bc3c42f870072e7f75b9ac8087492a7fa8c339e51ea9092c146
+efd9e79958b9d7c7b8730ee9015c72c3e8205effd03c686ff58b03454188f847
 ```
+
+The historical v1 commitment remains tracked for provenance in `data/generated/release_commitment_v1.json`.
 
 Public specifications and release metadata accompany the dataset under `config/public/` and in the manifest.
 
@@ -141,11 +145,12 @@ The laboratory baseline has passed the following gates:
 - `CB-001` — public/private configuration-boundary verification: **PASS (11/11)**
 - `HP-001` — hidden laboratory personality commitment: **PASS (8/8)**
 - `MC-001` — full synthetic measurement campaign: **PASS (8/8)**
-- `DR-001` — on-disk dataset release verification: **PASS (10/10)**
+- `DR-001` — historical v1 on-disk dataset release verification: **PASS (10/10)**
+- `DR-002` — cross-platform corrective-release integrity verification: **PASS (11/11)**
 
 ## Current stage
 
-The first Virtual Sensor Metrology Lab release cycle is complete.
+The first Virtual Sensor Metrology Lab release cycle and its cross-platform provenance correction are complete.
 
 ```text
 Verified simulator core
@@ -153,8 +158,9 @@ Verified simulator core
         -> Verified public/private configuration boundary
         -> Frozen hidden DUT/reference/chamber personality
         -> Full synthetic measurement campaign
-        -> DR-001 verified analyst-facing release
-        -> VSM-LAB-DATA-v1 FROZEN
+        -> Historical VSM-LAB-DATA-v1 freeze
+        -> DR-002 cross-platform integrity correction
+        -> VSM-LAB-DATA-v1.1 FROZEN
         -> Separate DS 7140 analysis repository   [NEXT]
 ```
 
@@ -189,7 +195,9 @@ Project continuity is maintained through three records:
 
 **Role:** Virtual laboratory + frozen synthetic measurement dataset generation
 
-**Frozen release:** `VSM-LAB-DATA-v1`
+**Canonical frozen release:** `VSM-LAB-DATA-v1.1`
+
+**Release-integrity gate:** `DR-002 = PASS (11/11)`
 
 **Downstream consumer:** separate DS 7140 analysis repository
 
