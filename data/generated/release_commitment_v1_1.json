@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "release_id": "VSM-LAB-DATA-v1.1",
+  "release_type": "CORRECTIVE",
+  "freeze_status": "CANDIDATE",
+  "parent_release_id": "VSM-LAB-DATA-v1",
+  "parent_dataset_commit_sha": "ab00064fb3b3f56014a6d4f7084a339de9254b9b",
+  "dataset_manifest_sha256": "efd9e79958b9d7c7b8730ee9015c72c3e8205effd03c686ff58b03454188f847",
+  "measurement_payload_changed": false,
+  "correction_scope": "Cross-platform release-integrity correction only: canonical LF line endings and corrected manifest commitment. Measurement CSV payloads, schemas, row counts, and hidden-personality commitment are unchanged from VSM-LAB-DATA-v1.",
+  "verification_gate": "DR-002",
+  "verification_status": "PENDING",
+  "policy": "VSM-LAB-DATA-v1 remains historically frozen. VSM-LAB-DATA-v1.1 may be frozen only after DR-002 passes and the corrective-release evidence is recorded."
+}
