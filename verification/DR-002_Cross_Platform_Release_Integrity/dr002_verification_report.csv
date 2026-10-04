@@ -1,0 +1,12 @@
+Check,Description,Status,Detail
+A,Corrective release identity and parent linkage are valid,PASS,release_id=VSM-LAB-DATA-v1.1
+B,Canonical LF policy is enforced by .gitattributes,PASS,required LF rules present
+C,Committed v1.1 manifest SHA-256 matches release commitment,PASS,observed=efd9e79958b9d7c7b8730ee9015c72c3e8205effd03c686ff58b03454188f847; expected=efd9e79958b9d7c7b8730ee9015c72c3e8205effd03c686ff58b03454188f847
+D,Committed CSV payload hashes match the v1.1 manifest,PASS,all CSV hashes match
+E,Measurement payload commitments are unchanged from VSM-LAB-DATA-v1,PASS,all seven CSV SHA-256 commitments preserved
+F,Manifest semantic change is limited to the release identifier,PASS,only release_id differs from historical v1 manifest
+G,Committed release artifacts use canonical LF with no CR bytes,PASS,canonical LF confirmed
+H,Committed row counts and schemas match the v1.1 manifest,PASS,all rows/columns match
+I,Analyst/private-truth boundary and hidden-personality commitment are preserved,PASS,boundary preserved
+J,No private simulator-truth files are tracked in the release directory,PASS,no private files tracked
+K,Corrective release commitment is in the final frozen state,PASS,freeze_status=FROZEN; verification_status=PASS (11/11)
