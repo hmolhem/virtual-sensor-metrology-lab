@@ -1,0 +1,6 @@
+# Canonical line endings for analyst-facing release artifacts.
+# These rules make byte-level SHA-256 commitments reproducible across platforms.
+data/generated/*.csv text eol=lf
+data/generated/*.json text eol=lf
+data/generated/README.md text eol=lf
+verification/**/*.csv text eol=lf
