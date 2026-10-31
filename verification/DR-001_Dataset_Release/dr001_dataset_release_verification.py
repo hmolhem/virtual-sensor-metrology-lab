@@ -98,6 +98,14 @@ def main() -> int:
     manifest = load_json(MANIFEST)
     commitment = load_json(COMMITMENT)
 
+    current_release_id = manifest.get("release_id")
+    if current_release_id != "VSM-LAB-DATA-v1":
+        print(
+            "DR-001: SKIPPED — historical VSM-LAB-DATA-v1 gate; "
+            f"current release is {current_release_id!r}. Use DR-002 for v1.1."
+        )
+        return 0
+
     identity_ok = (
         manifest.get("release_id") == "VSM-LAB-DATA-v1"
         and manifest.get("hidden_personality_id") == commitment.get("personality_id")
@@ -257,7 +265,7 @@ def main() -> int:
         print(f"{row['Check']}: {row['Status']} - {row['Description']}")
 
     if passed == len(results):
-        print("Release candidate VSM-LAB-DATA-v1 is eligible for freeze.")
+        print("Historical VSM-LAB-DATA-v1 release verification: PASS.")
     return 0 if passed == len(results) else 1
 
 
