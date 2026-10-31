@@ -55,7 +55,7 @@ The following work belongs to the separate **downstream analysis repository**:
 - compliance decisions
 - analysis notebooks, figures, tables, and reporting artifacts
 
-Simulator verification calculations may appear here, but they exist only to prove that the virtual laboratory behaves as intended. They are not substitutes for the downstream downstream analysis.
+Simulator verification calculations may appear here, but they exist only to prove that the virtual laboratory behaves as intended. They are not substitutes for the downstream analysis.
 
 ## Quick Start
 
@@ -154,9 +154,9 @@ The historical v1 commitment remains tracked for provenance in `data/generated/r
 
 Public specifications and release metadata accompany the dataset under `config/public/` and in the manifest.
 
-The downstream downstream repository starts from this frozen release package and does not depend on simulator internals.
+The downstream analysis repository starts from this frozen release package and does not depend on simulator internals.
 
-For the formal laboratory-to-course-project contract, see `docs/02_LAB_TO_DS7140_INTERFACE.md`.
+For the formal laboratory-to-analysis contract, see `docs/02_LAB_TO_DS7140_INTERFACE.md`.
 
 ## Verified engineering baseline
 
