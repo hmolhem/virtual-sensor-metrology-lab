@@ -1,0 +1,37 @@
+name: Public Verification
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify-public:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Unit tests
+        run: pytest -q
+      - name: Public configuration boundary
+        run: python verification/CB-001_Config_Boundary/cb001_config_boundary_verification.py
+      - name: Experimental design
+        run: python verification/ED-001_Experimental_Design/ed001_experimental_design_verification.py
+      - name: Static generator verification
+        run: python verification/SV-001_Static_Generator/sv001_static_generator_verification.py
+      - name: Dynamic generator verification
+        run: python verification/SV-002_Dynamic_Generator/sv002_dynamic_generator_verification.py
+      - name: Historical DR-001 behavior
+        run: python verification/DR-001_Dataset_Release/dr001_dataset_release_verification.py
+      - name: Canonical v1.1 release integrity
+        run: python verification/DR-002_Cross_Platform_Release_Integrity/dr002_cross_platform_release_integrity.py
+      - name: Private-gate public-clone behavior
+        run: |
+          python verification/HP-001_Hidden_Personality/hp001_hidden_personality_verification.py
+          python verification/MC-001_Full_Campaign/mc001_full_campaign_verification.py
