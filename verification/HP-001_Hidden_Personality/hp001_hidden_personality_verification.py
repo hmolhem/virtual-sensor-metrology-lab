@@ -53,6 +53,14 @@ def proxy_categories(private: dict) -> set[str]:
 def main() -> int:
     checks: list[tuple[str, bool, str]] = []
 
+    if not PRIVATE_PATH.exists():
+        print(
+            "HP-001: SKIPPED — requires private simulator configuration at "
+            f"{PRIVATE_PATH.relative_to(ROOT)}. Public clones intentionally do "
+            "not contain this file; verify the published SHA-256 commitment instead."
+        )
+        return 0
+
     commitment = json.loads(COMMITMENT_PATH.read_text(encoding="utf-8"))
     checks.append(("A", commitment["personality_id"] == "VSM-LAB-HP-v1", "commitment identity"))
 
