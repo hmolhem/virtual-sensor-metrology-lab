@@ -258,3 +258,18 @@ DR-002 = PASS (11/11)
 ```
 
 The seven measurement/design CSV payload commitments remain unchanged from v1. The next phase is downstream analysis of the frozen v1.1 release without using exact hidden simulator truth.
+
+
+## External Audit Closure — 2026-10-31
+
+An independent execution-based audit reran the public repository checks and compared the frozen v1.1 release against the downstream analyst copy.
+
+Corrective repository-maintenance work:
+
+- DR-001 is now explicitly treated as the historical VSM-LAB-DATA-v1 gate and reports SKIPPED on the current v1.1 release instead of a false failure;
+- DR-002 reads the historical v1 manifest from the reachable v1 freeze commit while preserving the original parent commit declared in the v1.1 release commitment;
+- HP-001 and MC-001 report an explicit SKIPPED status on public clones that intentionally lack private simulator configuration;
+- public requirements, tests, and a GitHub Actions verification workflow were added;
+- frozen-release design limitations for t90 stimulus speed, 90-day drift duration, temperature-channel modeling, and static STABLE-state scope are documented.
+
+No frozen measurement CSV, dataset manifest, hidden-personality commitment, or v1.1 release identity was changed.
