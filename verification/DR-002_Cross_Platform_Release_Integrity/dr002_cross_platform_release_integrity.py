@@ -11,7 +11,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 CURRENT_MANIFEST_PATH = "data/generated/dataset_manifest.json"
 CURRENT_COMMITMENT_PATH = "data/generated/release_commitment_v1_1.json"
-HISTORICAL_COMMIT = "ab00064fb3b3f56014a6d4f7084a339de9254b9b"
+HISTORICAL_REFERENCE_COMMIT = "dfcca2a3e8803682e9dd699e85b93c30bbfb6491"
+DECLARED_PARENT_DATASET_COMMIT = "ab00064fb3b3f56014a6d4f7084a339de9254b9b"
 HISTORICAL_MANIFEST_PATH = "data/generated/dataset_manifest.json"
 REPORT = Path(__file__).with_name("dr002_verification_report.csv")
 
@@ -101,13 +102,13 @@ def main() -> int:
 
     current_manifest = git_json("HEAD", CURRENT_MANIFEST_PATH)
     commitment = git_json("HEAD", CURRENT_COMMITMENT_PATH)
-    historical_manifest = git_json(HISTORICAL_COMMIT, HISTORICAL_MANIFEST_PATH)
+    historical_manifest = git_json(HISTORICAL_REFERENCE_COMMIT, HISTORICAL_MANIFEST_PATH)
 
     identity_ok = (
         current_manifest.get("release_id") == "VSM-LAB-DATA-v1.1"
         and commitment.get("release_id") == "VSM-LAB-DATA-v1.1"
         and commitment.get("parent_release_id") == "VSM-LAB-DATA-v1"
-        and commitment.get("parent_dataset_commit_sha") == HISTORICAL_COMMIT
+        and commitment.get("parent_dataset_commit_sha") == DECLARED_PARENT_DATASET_COMMIT
         and commitment.get("release_type") == "CORRECTIVE"
     )
     results.append(record("A", "Corrective release identity and parent linkage are valid", identity_ok, f"release_id={current_manifest.get('release_id')}"))
