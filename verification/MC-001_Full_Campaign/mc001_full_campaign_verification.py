@@ -46,6 +46,16 @@ def record(check, description, passed, detail):
 
 def main() -> int:
     results = []
+
+    if not PRIVATE.exists():
+        print(
+            "MC-001: SKIPPED — full campaign regeneration requires the private "
+            f"simulator configuration at {PRIVATE.relative_to(ROOT)}. Public "
+            "clones intentionally cannot regenerate hidden truth; use the frozen "
+            "release hashes and DR-002 for public reproducibility."
+        )
+        return 0
+
     truth = load_private_truth(PRIVATE)
     commitment = loadj(COMMITMENT)
     execution = loadj(EXECUTION)
