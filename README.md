@@ -2,7 +2,7 @@
 
 A reproducible virtual metrology laboratory for generating physics-informed synthetic measurement datasets for sensor validation, calibration, dynamics, stability, and uncertainty studies.
 
-This repository is the **laboratory and dataset-generation system**. It is intentionally separate from the downstream **DS 7140 data-science analysis project**.
+This repository is the **laboratory and dataset-generation system**. It is intentionally separate from the downstream **analyst-side sensor-validation repository**.
 
 ## Scope
 
@@ -42,7 +42,7 @@ The current implementation is configured for an HVAC relative-humidity sensor, b
 
 ## What this repository does not own
 
-The following work belongs to the separate **DS 7140 course-project repository**:
+The following work belongs to the separate **downstream analysis repository**:
 
 - exploratory data analysis
 - analyst-side statistical characterization
@@ -53,15 +53,39 @@ The following work belongs to the separate **DS 7140 course-project repository**
 - stability/drift analysis
 - measurement-uncertainty budget and Monte Carlo propagation
 - compliance decisions
-- course notebooks, figures, tables, and final report
+- analysis notebooks, figures, tables, and reporting artifacts
 
-Simulator verification calculations may appear here, but they exist only to prove that the virtual laboratory behaves as intended. They are not substitutes for the downstream DS 7140 analysis.
+Simulator verification calculations may appear here, but they exist only to prove that the virtual laboratory behaves as intended. They are not substitutes for the downstream downstream analysis.
+
+## Quick Start
+
+Install the public verification environment:
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+Run public checks:
+
+```bash
+pytest -q
+python verification/DR-002_Cross_Platform_Release_Integrity/dr002_cross_platform_release_integrity.py
+```
+
+The GitHub Actions public-verification workflow also runs the public boundary, experimental-design, simulator, and release-integrity gates.
+
+Two gates intentionally depend on simulator-only local configuration:
+
+- `HP-001` — hidden-personality verification;
+- `MC-001` — full campaign regeneration.
+
+On a public clone these gates now report `SKIPPED` with an explanatory message rather than raising a raw traceback. Public reproducibility is provided by the frozen release commitments and DR-002.
 
 ## Information boundary
 
 ### Public / analyst-visible
 
-The downstream course repository may receive:
+The downstream analysis repository may receive:
 
 - DUT public specification and acceptance limits
 - reference-instrument public specification
@@ -94,7 +118,7 @@ The executable boundary policy is implemented in `src/config_boundary.py`, which
 
 ## Dataset release boundary
 
-The formal handoff from this laboratory to the separate DS 7140 project is `data/generated/`.
+The formal handoff from this laboratory to the separate downstream project is `data/generated/`.
 
 The canonical frozen release package is:
 
@@ -130,7 +154,7 @@ The historical v1 commitment remains tracked for provenance in `data/generated/r
 
 Public specifications and release metadata accompany the dataset under `config/public/` and in the manifest.
 
-The downstream DS 7140 repository starts from this frozen release package and does not depend on simulator internals.
+The downstream downstream repository starts from this frozen release package and does not depend on simulator internals.
 
 For the formal laboratory-to-course-project contract, see `docs/02_LAB_TO_DS7140_INTERFACE.md`.
 
@@ -145,8 +169,19 @@ The laboratory baseline has passed the following gates:
 - `CB-001` — public/private configuration-boundary verification: **PASS (11/11)**
 - `HP-001` — hidden laboratory personality commitment: **PASS (8/8)**
 - `MC-001` — full synthetic measurement campaign: **PASS (8/8)**
-- `DR-001` — historical v1 on-disk dataset release verification: **PASS (10/10)**
-- `DR-002` — cross-platform corrective-release integrity verification: **PASS (11/11)**
+- `DR-001` — historical v1 dataset-release gate: **PASS (10/10) on v1; SKIPPED on current v1.1**
+- `DR-002` — canonical v1.1 cross-platform corrective-release integrity verification: **PASS (11/11)**
+
+## Frozen Release Design Limitations
+
+The canonical `VSM-LAB-DATA-v1.1` release is intentionally frozen. The following limitations are therefore documented rather than retroactively changed:
+
+- the dynamic-step chamber/reference response is slower than the public DUT `t90 <= 60 s` requirement, so direct DUT-only t90 compliance cannot be demonstrated from this campaign;
+- the stability campaign spans 90 days, so annual drift compliance cannot be demonstrated without unsupported extrapolation;
+- the released static temperature channels use the same rounded local temperature indication for DUT and reference, so independent temperature-channel measurement error is not represented;
+- static records are released only after the campaign has entered the declared `STABLE` state; transient chamber-state behavior is characterized in the dedicated dynamic families.
+
+A future release may extend these design dimensions, but doing so requires a new release identifier and a new verification/freeze cycle.
 
 ## Current stage
 
@@ -161,7 +196,7 @@ Verified simulator core
         -> Historical VSM-LAB-DATA-v1 freeze
         -> DR-002 cross-platform integrity correction
         -> VSM-LAB-DATA-v1.1 FROZEN
-        -> Separate DS 7140 analysis repository   [NEXT]
+        -> Separate downstream analysis repository   [NEXT]
 ```
 
 No further analysis of sensor performance belongs in this repository unless it is needed to verify the laboratory itself.
@@ -199,6 +234,6 @@ Project continuity is maintained through three records:
 
 **Release-integrity gate:** `DR-002 = PASS (11/11)`
 
-**Downstream consumer:** separate DS 7140 analysis repository
+**Downstream consumer:** separate downstream analysis repository
 
 For chronological status, see `docs/PROJECT_HISTORY.md`.
