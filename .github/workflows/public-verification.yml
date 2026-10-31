@@ -24,9 +24,9 @@ jobs:
       - name: Experimental design
         run: python verification/ED-001_Experimental_Design/ed001_experimental_design_verification.py
       - name: Static generator verification
-        run: python verification/SV-001_Static_Generator/sv001_static_generator_verification.py
+        run: python verification/SV-001_Static/sv001_static_verification.py
       - name: Dynamic generator verification
-        run: python verification/SV-002_Dynamic_Generator/sv002_dynamic_generator_verification.py
+        run: python verification/SV-002_Dynamic/sv002_dynamic_verification.py
       - name: Historical DR-001 behavior
         run: python verification/DR-001_Dataset_Release/dr001_dataset_release_verification.py
       - name: Canonical v1.1 release integrity
