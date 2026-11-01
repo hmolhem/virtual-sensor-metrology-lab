@@ -239,3 +239,16 @@ Project continuity is maintained through three records:
 **Downstream consumer:** separate downstream analysis repository
 
 For chronological status, see `docs/PROJECT_HISTORY.md`.
+
+## Licensing
+
+This repository uses a split license appropriate for a software-plus-dataset
+metrology project:
+
+- **Source code:** MIT License — see `LICENSE`.
+- **Frozen datasets, documentation, figures, tables, and other non-code
+  artifacts:** Creative Commons Attribution 4.0 International (CC BY 4.0) — see
+  `LICENSE-DATA-DOCS.md`.
+
+For mixed Jupyter-style or executable documentation content, code is covered by
+MIT and prose/figures/output content by CC BY 4.0.
