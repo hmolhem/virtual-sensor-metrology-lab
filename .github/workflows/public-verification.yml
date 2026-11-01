@@ -2,6 +2,9 @@ name: Public Verification
 
 on:
   pull_request:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -13,10 +16,12 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.12.15"
           cache: pip
       - name: Install dependencies
         run: pip install -r requirements.txt
+      - name: Ruff static checks
+        run: ruff check . --select E4,E7,E9,F,B --ignore B023
       - name: Unit tests
         run: pytest -q
       - name: Public configuration boundary
