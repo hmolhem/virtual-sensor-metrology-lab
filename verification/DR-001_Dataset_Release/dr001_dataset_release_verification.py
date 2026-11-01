@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from src.campaign import FILES, safe  # noqa: E402
+from src.campaign import safe  # noqa: E402
 
 GENERATED = ROOT / "data" / "generated"
 MANIFEST = GENERATED / "dataset_manifest.json"
