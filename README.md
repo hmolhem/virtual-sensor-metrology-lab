@@ -74,6 +74,8 @@ python verification/DR-002_Cross_Platform_Release_Integrity/dr002_cross_platform
 
 The GitHub Actions public-verification workflow also runs the public boundary, experimental-design, simulator, and release-integrity gates.
 
+The public verification environment is pinned to the exact package versions exercised by the successful 2026-10-31 audit run. CI runs on pull requests, pushes to `main`, and manual dispatch. It also runs Ruff static checks before the verification gates. Ruff rule B023 is explicitly ignored because the reported loop-binding warning was reviewed as a false positive for the current implementation; no late-bound loop-variable defect was identified.
+
 Two gates intentionally depend on simulator-only local configuration:
 
 - `HP-001` — hidden-personality verification;
